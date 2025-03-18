@@ -14,7 +14,6 @@ data class UserCreateRequest(
     val fullName: String,
     val phoneNumber: String,
     val address: String,
-    val role: Role,
     val gender: Gender
 )
 
@@ -25,7 +24,6 @@ data class UserResponse(
     val fullName: String?,
     val phoneNumber: String?,
     val address: String?,
-    val role: Role?,
     val gender: Gender?
 )
 
@@ -35,12 +33,12 @@ data class UserUpdateRequest(
     val fullName: String,
     val phoneNumber: String,
     val address: String,
-    val role: Role,
     val gender: Gender
 )
 //
 data class EmployeeCreateRequest(
     val userId: Long,
+    val role: Role,
     val experience: Long,
     val degree: String,
     //val serviceId: Long?,
@@ -67,6 +65,7 @@ data class EmployeeUpdateRequest(
 
 data class PatientCreateRequest(
     val userId: Long,
+    val role: Role,
     val birthDate: LocalDate,
     val address: String
 )

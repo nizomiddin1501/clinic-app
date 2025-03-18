@@ -4,9 +4,26 @@ import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 
+const val BASE_API = "api/v1"
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("$BASE_API/auth")
+class AuthController(
+    private val authService: AuthService
+) {
+
+    @PostMapping("login")
+    fun login(@RequestBody request: LoginRequest) =
+        authService.authenticate(request)
+
+
+    @PostMapping("refresh")
+    fun refresh(@RequestBody request: RefreshRequest) = authService.refresh(request)
+}
+
+
+@RestController
+@RequestMapping("$BASE_API/users")
 class UserController(val service: UserService) {
 
     @GetMapping
@@ -35,7 +52,7 @@ class UserController(val service: UserService) {
 
 
 @RestController
-@RequestMapping("/api/v1/employees")
+@RequestMapping("$BASE_API/employees")
 class EmployeeController(val service: EmployeeService) {
 
     @GetMapping
@@ -64,7 +81,7 @@ class EmployeeController(val service: EmployeeService) {
 
 
 @RestController
-@RequestMapping("/api/v1/patients")
+@RequestMapping("$BASE_API/patients")
 class PatientController(val service: PatientService) {
 
     @GetMapping
@@ -93,7 +110,7 @@ class PatientController(val service: PatientService) {
 
 
 @RestController
-@RequestMapping("/api/v1/services")
+@RequestMapping("$BASE_API/services")
 class ServiceController(val service: ServiceService) {
 
     @GetMapping
@@ -126,7 +143,7 @@ class ServiceController(val service: ServiceService) {
 
 
 @RestController
-@RequestMapping("/api/v1/transactions")
+@RequestMapping("$BASE_API/transactions")
 class TransactionController(val service: TransactionService) {
 
     @GetMapping
@@ -155,7 +172,7 @@ class TransactionController(val service: TransactionService) {
 
 
 @RestController
-@RequestMapping("/api/v1/appointments")
+@RequestMapping("$BASE_API/appointments")
 class AppointmentController(val service: AppointmentService) {
 
     @GetMapping
@@ -189,7 +206,7 @@ class AppointmentController(val service: AppointmentService) {
 
 
 @RestController
-@RequestMapping("/api/v1/test-results")
+@RequestMapping("$BASE_API/test-results")
 class TestResultController(val service: TestResultService) {
 
     @GetMapping
@@ -218,7 +235,7 @@ class TestResultController(val service: TestResultService) {
 
 
 @RestController
-@RequestMapping("/api/v1/schedules")
+@RequestMapping("$BASE_API/schedules")
 class ScheduleController(val service: ScheduleService) {
 
     @GetMapping
@@ -251,7 +268,7 @@ class ScheduleController(val service: ScheduleService) {
 
 
 @RestController
-@RequestMapping("/api/v1/departments")
+@RequestMapping("$BASE_API/departments")
 class DepartmentController(val service: DepartmentService) {
 
     @GetMapping
@@ -280,7 +297,7 @@ class DepartmentController(val service: DepartmentService) {
 
 
 @RestController
-@RequestMapping("/api/v1/clinics")
+@RequestMapping("$BASE_API/clinics")
 class ClinicController(val service: ClinicService) {
 
     @GetMapping

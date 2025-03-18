@@ -32,7 +32,6 @@ class User(
     @Column(nullable = false) var fullName: String,
     @Column(nullable = false) var phoneNumber: String,
     @Column(nullable = false) var address: String,
-    @Enumerated(EnumType.STRING) @Column(nullable = false) var role: Role,
     @Enumerated(EnumType.STRING) @Column(nullable = false) var gender: Gender,
 ) : BaseEntity()
 
@@ -40,6 +39,7 @@ class User(
 @Entity(name = "patients")
 class Patient(
     @OneToOne @JoinColumn(name = "user_id", nullable = false) val user: User,
+    @Enumerated(EnumType.STRING) @Column(nullable = false) var role: Role,
     @Column(nullable = false) var birthDate: LocalDate,
     @Column(nullable = false) var address: String,
 ) : BaseEntity()
@@ -50,6 +50,7 @@ class Employee(
     @Column(nullable = false) var experience: Long,
     @Column(nullable = false) var degree: String,
     @OneToOne @JoinColumn(name = "user_id", nullable = false) val user: User,
+    @Enumerated(EnumType.STRING) @Column(nullable = false) var role: Role,
     //@ManyToOne @JoinColumn(name = "service_id", nullable = true) val service: Services? = null,
     @ManyToOne @JoinColumn(name = "clinic_id", nullable = false) val clinic: Clinic,
     @ManyToMany  var patients:MutableList<Patient> = mutableListOf()

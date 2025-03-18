@@ -14,7 +14,6 @@ class UserMapper {
                 fullName = this.fullName,
                 phoneNumber = this.phoneNumber,
                 address = this.address,
-                role = this.role,
                 gender = this.gender
             )
         }
@@ -28,7 +27,6 @@ class UserMapper {
                 fullName = this.fullName,
                 phoneNumber = this.phoneNumber,
                 address = this.address,
-                role = this.role,
                 gender = this.gender
             )
         }
@@ -42,7 +40,6 @@ class UserMapper {
                 updateRequest.fullName.let { this.fullName = it }
                 updateRequest.phoneNumber.let { this.phoneNumber = it }
                 updateRequest.address.let { this.address = it }
-                updateRequest.role.let { this.role = it }
                 updateRequest.gender.let { this.gender = it }
             }
         }
@@ -58,7 +55,7 @@ class PatientMapper(
             PatientResponse(
                 id = id,
                 userId = user.id,
-                role =  user.role,
+                role =  role,
                 birthDate = birthDate,
                 address = address,
                 userFullName = user.fullName
@@ -70,6 +67,7 @@ class PatientMapper(
         return createRequest.run {
             Patient(
                 user = user,
+                role = role,
                 birthDate = birthDate,
                 address = address
             )
@@ -97,7 +95,7 @@ class EmployeeMapper(
                 id = id,
                 userId = user.id,
                 userFullName = user.fullName,
-                role = user.role,
+                role = role,
                 experience = experience,
                 degree = degree,
 //                serviceId = service!!.id,
@@ -112,6 +110,7 @@ class EmployeeMapper(
         return createRequest.run {
             Employee(
                 user = user,
+                role = role,
                 experience = experience,
                 degree = degree,
                 //service = service,
