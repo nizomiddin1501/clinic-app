@@ -8,7 +8,7 @@ import java.time.LocalTime
 
 data class BaseMessage(val code: Int, val message: String?)
 
-data class UserCreateRequest(
+data class UserRegisterRequest(
     val username: String,
     val password: String,
     val fullName: String,

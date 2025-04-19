@@ -1,7 +1,7 @@
 package zeroone.developers.clinicapp
 
 enum class Role {
-    PATIENT, CASHIER, DOCTOR, DIRECTOR, LAB_TECHNICIAN
+    PATIENT, CASHIER, DOCTOR, DIRECTOR, LAB_TECHNICIAN,DEV
 }
 
 enum class OrderStatus {
@@ -30,6 +30,7 @@ enum class ErrorCode(val code: Int) {
     USER_NOT_FOUND(101),
     USERNAME_INVALID(102),
     USER_NOT_AUTHENTICATED(103),
+    BAD_CREDENTIALS(104),
     EMPLOYEE_NOT_FOUND(200),
     EMPLOYEE_ALREADY_EXISTS(201),
     PATIENT_NOT_FOUND(300),

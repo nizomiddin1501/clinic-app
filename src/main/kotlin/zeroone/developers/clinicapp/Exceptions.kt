@@ -54,6 +54,10 @@ class UsernameInvalidException() : ClinicException() {
     override fun errorCode(): ErrorCode = ErrorCode.USERNAME_INVALID
 }
 
+class BadCredentialsException : ClinicException() {
+    override fun errorCode() = ErrorCode.BAD_CREDENTIALS
+}
+
 class EmployeeNotFoundException() : ClinicException() {
     override fun errorCode(): ErrorCode = ErrorCode.EMPLOYEE_NOT_FOUND
 }

@@ -3,23 +3,24 @@ package zeroone.developers.clinicapp
 import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
+import zeroone.developers.clinicapp.services.*
 
 const val BASE_API = "api/v1"
 
-@RestController
-@RequestMapping("$BASE_API/auth")
-class AuthController(
-    private val authService: AuthService
-) {
-
-    @PostMapping("login")
-    fun login(@RequestBody request: LoginRequest) =
-        authService.authenticate(request)
-
-
-    @PostMapping("refresh")
-    fun refresh(@RequestBody request: RefreshRequest) = authService.refresh(request)
-}
+//@RestController
+//@RequestMapping("$BASE_API/auth")
+//class AuthController(
+//    private val authService: AuthService
+//) {
+//
+//    @PostMapping("login")
+//    fun login(@RequestBody request: LoginRequest) =
+//        authService.authenticate(request)
+//
+//
+//    @PostMapping("refresh")
+//    fun refresh(@RequestBody request: RefreshRequest) = authService.refresh(request)
+//}
 
 
 @RestController
@@ -39,7 +40,7 @@ class UserController(val service: UserService) {
 
 
     @PostMapping
-    fun create(@RequestBody @Valid request: UserCreateRequest) = service.create(request)
+    fun create(@RequestBody @Valid request: UserRegisterRequest) = service.register(request)
 
 
     @PutMapping("{id}")

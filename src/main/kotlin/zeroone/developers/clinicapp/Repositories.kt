@@ -66,7 +66,7 @@ class BaseRepositoryImpl<T : BaseEntity>(
 @Repository
 interface UserRepository : BaseRepository<User> {
     fun findByUsernameAndDeletedFalse(username: String): User?
-
+//    fun findByLoginAndDeletedFalse(username: String): User?
     fun findByPhoneNumberAndDeletedFalse(phoneNumber: String): User?
 
     @Query("""
@@ -209,6 +209,10 @@ interface DepartmentRepository : BaseRepository<Department> {
 
 @Repository
 interface ClinicRepository : BaseRepository<Clinic> {
+
+    @Query("select c from clinics c order by c.id asc limit 1")
+    fun findFirst(): Optional<Clinic>
+
     fun findByNameAndDeletedFalse(name: String): Clinic?
 
     @Query("""

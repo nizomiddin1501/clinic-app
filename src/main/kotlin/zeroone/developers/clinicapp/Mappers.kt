@@ -19,7 +19,7 @@ class UserMapper {
         }
     }
 
-    fun toEntity(createRequest: UserCreateRequest): User {
+    fun toEntity(createRequest: UserRegisterRequest): User {
         return createRequest.run {
             User(
                 username = this.username,
